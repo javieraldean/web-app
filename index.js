@@ -49,12 +49,12 @@ app.use(
 
 app.get("/", async (req, res) => {
  try {
-  const summary = await axios.get(`${API_URL}/total`);
-  .render("home", {
-    user: req.oidc && req.oidc.user,
-    total: summary.data.total,
-    count: summary.data.count,
-  });
+   const summary = await axios.get(`${API_URL}/total`);
+   res.render("home", {
+     user: req.oidc && req.oidc.user,
+     total: summary.data.total,
+     count: summary.data.count,
+   });
  } catch (err) {
    next(err);
  }
